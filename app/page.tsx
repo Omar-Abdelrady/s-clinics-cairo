@@ -1,25 +1,37 @@
 import Image from "next/image";
 import {
+  ArrowDownLeft,
   ArrowLeft,
   ArrowUpLeft,
-  BadgeCheck,
   Camera,
+  Check,
   MapPin,
   MessageCircle,
   Phone,
-  SearchCheck,
-  ShieldCheck,
-  Sparkles,
   Star,
-  Stethoscope,
 } from "lucide-react";
 import { FaqList } from "@/components/faq-list";
 import { Reveal } from "@/components/reveal";
-import { SectionHeading } from "@/components/section-heading";
 import { SiteHeader } from "@/components/site-header";
 import { clinic, contactLinks } from "@/data/clinic";
 
-const serviceIcons = [Sparkles, Stethoscope, SearchCheck] as const;
+const proofPoints = [
+  {
+    label: "تقييم المرضى",
+    value: clinic.rating.value,
+    note: `${clinic.rating.reviews} · ${clinic.rating.note}`,
+  },
+  {
+    label: "موقعنا",
+    value: "الشيخ زايد",
+    note: "Twin Towers · المبنى C",
+  },
+  {
+    label: "بداية بسيطة",
+    value: "حجز مباشر",
+    note: "واتساب أو مكالمة",
+  },
+] as const;
 
 export default function Home() {
   return (
@@ -31,152 +43,197 @@ export default function Home() {
 
       <main id="main-content">
         <section className="hero" id="home" aria-labelledby="hero-title">
-          <div className="hero-glow hero-glow-one" aria-hidden="true" />
-          <div className="hero-glow hero-glow-two" aria-hidden="true" />
+          <div className="hero-ambient hero-ambient-one" aria-hidden="true" />
+          <div className="hero-ambient hero-ambient-two" aria-hidden="true" />
           <div className="container hero-grid">
             <div className="hero-copy">
-              <Reveal>
-                <p className="hero-kicker">
-                  <MapPin size={17} aria-hidden="true" />
-                  رعاية أسنان متخصصة في الشيخ زايد
-                </p>
-                <h1 id="hero-title">
-                  ابتسامتك تبدأ
-                  {" "}<span>برعاية أدق.</span>
-                </h1>
-                <p className="hero-lead">
-                  في S Clinics بنجمع بين الخبرة، التشخيص الواضح، والاهتمام
-                  بالتفاصيل — علشان كل خطوة في رحلتك العلاجية تبقى أهدى وأوضح.
-                </p>
-                <div className="hero-actions">
-                  <a
-                    className="button button-gold button-large"
-                    href={contactLinks.whatsapp}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MessageCircle size={20} aria-hidden="true" />
-                    احجز على واتساب
-                    <ArrowLeft size={18} aria-hidden="true" />
-                  </a>
-                  <a className="button button-ghost button-large" href={contactLinks.phone}>
-                    <Phone size={19} aria-hidden="true" />
-                    اتصل بالعيادة
-                  </a>
-                </div>
-                <p className="hero-note">Changing the world, one smile at a time.</p>
-              </Reveal>
+              <p className="hero-index">
+                <span>01</span>
+                عناية أسنان بمعايير أدق
+              </p>
+              <h1
+                id="hero-title"
+                className="hero-title"
+                aria-label="ابتسامتك تبدأ برعاية أدق."
+              >
+                <span className="hero-title-line hero-title-line-one">
+                  <span>ابتسامتك</span>
+                </span>
+                <span className="hero-title-line hero-title-line-two">
+                  <span>تبدأ برعاية أدق.</span>
+                </span>
+              </h1>
+              <p className="hero-lead">
+                خبرة متخصصة، تشخيص واضح، واهتمام حقيقي بالتفاصيل — علشان
+                رحلتك العلاجية تبقى أهدى من أول زيارة.
+              </p>
+              <div className="hero-actions">
+                <a
+                  className="button button-gold button-large"
+                  href={contactLinks.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle size={20} aria-hidden="true" />
+                  احجز على واتساب
+                  <ArrowLeft size={18} aria-hidden="true" />
+                </a>
+                <a className="quiet-link" href={contactLinks.phone}>
+                  <Phone size={18} aria-hidden="true" />
+                  اتصل بالعيادة
+                </a>
+              </div>
+              <div className="hero-signature">
+                <span>S Clinics</span>
+                <small>Changing the world, one smile at a time.</small>
+              </div>
             </div>
 
-            <Reveal className="hero-visual-wrap" delay={140}>
-              <div className="hero-visual">
+            <Reveal className="hero-media-wrap" variant="clip" delay={120}>
+              <div className="hero-media">
                 <Image
-                  src="/images/doctor-operating-room.jpg"
+                  src="/images/ai/clinic-interior-editorial.png"
                   fill
-                  sizes="(max-width: 900px) 92vw, 44vw"
-                  alt="د. عمر محمد ثروت داخل غرفة العمليات مع الفريق الطبي"
+                  sizes="(max-width: 960px) 94vw, 52vw"
+                  alt="عيادة أسنان عصرية بإضاءة هادئة"
                   className="hero-image"
                   priority
                 />
-                <div className="hero-image-shade" aria-hidden="true" />
-                <div className="hero-doctor-card">
-                  <span className="status-dot" aria-hidden="true" />
+                <div className="hero-media-vignette" aria-hidden="true" />
+                <div className="hero-location-card">
+                  <MapPin size={18} aria-hidden="true" />
                   <span>
-                    <strong>{clinic.doctor.name}</strong>
-                    <small>{clinic.doctor.specialty}</small>
+                    <small>موقع العيادة</small>
+                    الشيخ زايد · Twin Towers
                   </span>
                 </div>
-                <div className="hero-monogram" aria-hidden="true">S</div>
+                <span className="hero-image-index" aria-hidden="true">
+                  S / 01
+                </span>
               </div>
             </Reveal>
           </div>
+          <a className="scroll-cue" href="#services">
+            <span>اكتشف العيادة</span>
+            <ArrowDownLeft size={18} aria-hidden="true" />
+          </a>
         </section>
 
-        <section className="trust-strip" aria-label="معلومات سريعة عن العيادة">
-          <div className="container trust-grid">
-            <div className="trust-item">
-              <span className="trust-icon"><Star size={22} aria-hidden="true" /></span>
-              <span><strong>{clinic.rating.value}</strong><small>{clinic.rating.reviews} — {clinic.rating.note}</small></span>
-            </div>
-            <div className="trust-item">
-              <span className="trust-icon"><MapPin size={22} aria-hidden="true" /></span>
-              <span><strong>الشيخ زايد</strong><small>Twin Towers — المبنى C</small></span>
-            </div>
-            <div className="trust-item">
-              <span className="trust-icon"><MessageCircle size={22} aria-hidden="true" /></span>
-              <span><strong>حجز مباشر</strong><small>واتساب أو مكالمة تليفون</small></span>
-            </div>
+        <section className="proof-section" aria-label="معلومات سريعة عن العيادة">
+          <div className="container proof-grid">
+            {proofPoints.map((item, index) => (
+              <Reveal key={item.label} className="proof-item" delay={index * 70}>
+                <span className="proof-number">0{index + 1}</span>
+                <div>
+                  <small>{item.label}</small>
+                  <strong>{item.value}</strong>
+                  <span>{item.note}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
         <section className="section services-section" id="services" aria-labelledby="services-title">
-          <div className="container">
-            <Reveal>
-              <div id="services-title">
-                <SectionHeading
-                  eyebrow="رعاية تناسب احتياجك"
-                  title="خدماتنا"
-                  description="نبدأ دائمًا بفهم الحالة ومناقشة الاختيارات بوضوح قبل أي إجراء علاجي."
-                />
-              </div>
-            </Reveal>
-            <div className="services-grid">
-              {clinic.services.map((service, index) => {
-                const Icon = serviceIcons[index];
-                return (
-                  <Reveal key={service.title} delay={index * 90}>
-                    <article className="service-card">
-                      <div className="service-topline">
-                        <span className="service-icon"><Icon size={25} aria-hidden="true" /></span>
-                        <span className="service-number">{service.number}</span>
-                      </div>
+          <div className="container services-layout">
+            <div className="services-intro">
+              <Reveal>
+                <p className="editorial-label">
+                  <span>02</span>
+                  خدماتنا
+                </p>
+                <h2 id="services-title">خبرة دقيقة. تجربة أهدى.</h2>
+                <p className="section-lead">
+                  كل خطة بتبدأ بفهم الحالة ومناقشة الاختيارات بوضوح، قبل أي
+                  إجراء علاجي.
+                </p>
+              </Reveal>
+              <Reveal className="services-image-wrap" variant="clip" delay={100}>
+                <div className="services-image">
+                  <Image
+                    src="/images/ai/dental-tools-editorial.png"
+                    fill
+                    sizes="(max-width: 860px) 92vw, 36vw"
+                    alt="أدوات أسنان دقيقة مرتبة على سطح حجري فاتح"
+                    className="editorial-image"
+                  />
+                </div>
+                <p className="image-caption">
+                  Precision in every detail <span>02 / 05</span>
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="services-list">
+              {clinic.services.map((service, index) => (
+                <Reveal key={service.title} delay={100 + index * 90}>
+                  <article className="service-row">
+                    <span className="service-number">{service.number}</span>
+                    <div className="service-content">
                       <h3>{service.title}</h3>
                       <p>{service.description}</p>
-                      <a href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
-                        اسأل عن الخدمة <ArrowUpLeft size={17} aria-hidden="true" />
-                      </a>
-                    </article>
-                  </Reveal>
-                );
-              })}
+                    </div>
+                    <a
+                      href={contactLinks.whatsapp}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`اسأل عن ${service.title}`}
+                    >
+                      <ArrowUpLeft size={20} aria-hidden="true" />
+                    </a>
+                  </article>
+                </Reveal>
+              ))}
+              <Reveal delay={380}>
+                <div className="services-note">
+                  <Check size={18} aria-hidden="true" />
+                  بنشرح الاختيارات المتاحة قبل ما نبدأ أي خطوة.
+                </div>
+              </Reveal>
             </div>
           </div>
         </section>
 
         <section className="section doctor-section" id="doctor" aria-labelledby="doctor-title">
-          <div className="container doctor-grid">
-            <Reveal className="doctor-image-wrap">
-              <div className="doctor-image-frame">
+          <div className="container doctor-layout">
+            <Reveal className="doctor-visual" variant="clip">
+              <div className="doctor-photo">
                 <Image
                   src="/images/doctor-operating-room.jpg"
                   fill
-                  sizes="(max-width: 900px) 92vw, 48vw"
+                  sizes="(max-width: 900px) 94vw, 54vw"
                   alt="د. عمر محمد ثروت مع الفريق الطبي داخل غرفة العمليات"
                   className="doctor-image"
                 />
               </div>
-              <div className="doctor-experience-badge">
-                <BadgeCheck size={24} aria-hidden="true" />
-                <span>خبرة متخصصة<br />ورعاية شخصية</span>
+              <div className="doctor-photo-note">
+                <span className="status-dot" aria-hidden="true" />
+                جراحة الفم والوجه والفكين
               </div>
             </Reveal>
 
-            <Reveal className="doctor-copy" delay={100}>
-              <p className="eyebrow">اعرف طبيبك</p>
+            <Reveal className="doctor-copy" variant="fade" delay={100}>
+              <p className="editorial-label">
+                <span>03</span>
+                اعرف طبيبك
+              </p>
               <h2 id="doctor-title">{clinic.doctor.name}</h2>
-              <p className="doctor-role">{clinic.doctor.specialty} · {clinic.doctor.role}</p>
-              <p>
-                هدفنا إن الزيارة تبدأ بفهم واضح لحالتك وتنتهي بخطة مناسبة ليك.
-                بنهتم بالتفاصيل، وبنشرح الاختيارات المتاحة قبل ما ناخد أي خطوة.
+              <p className="doctor-role">
+                {clinic.doctor.specialty} · {clinic.doctor.role}
+              </p>
+              <p className="doctor-statement">
+                «هدفنا إن الزيارة تبدأ بفهم واضح لحالتك، وتنتهي بخطة مناسبة
+                ليك — من غير استعجال ومن غير وعود مبالغ فيها.»
               </p>
               <ul className="doctor-values">
-                <li><ShieldCheck size={20} aria-hidden="true" /> تقييم مهني لكل حالة</li>
-                <li><ShieldCheck size={20} aria-hidden="true" /> شرح واضح للاختيارات</li>
-                <li><ShieldCheck size={20} aria-hidden="true" /> متابعة واهتمام بالتفاصيل</li>
+                <li>تقييم مهني لكل حالة</li>
+                <li>شرح واضح للاختيارات</li>
+                <li>متابعة واهتمام بالتفاصيل</li>
               </ul>
-              <a className="text-link" href={contactLinks.doctorInstagram} target="_blank" rel="noreferrer">
-                <Camera size={19} aria-hidden="true" /> تابع د. عمر على إنستجرام
-                <ArrowUpLeft size={16} aria-hidden="true" />
+              <a className="arrow-link" href={contactLinks.doctorInstagram} target="_blank" rel="noreferrer">
+                <Camera size={18} aria-hidden="true" />
+                تابع د. عمر على إنستجرام
+                <ArrowUpLeft size={17} aria-hidden="true" />
               </a>
             </Reveal>
           </div>
@@ -184,103 +241,129 @@ export default function Home() {
 
         <section className="section results-section" id="results" aria-labelledby="results-title">
           <div className="container">
-            <Reveal>
-              <div id="results-title">
-                <SectionHeading
-                  eyebrow="تفاصيل صغيرة، فرق واضح"
-                  title="نماذج من الحالات"
-                  description="صور منشورة بواسطة العيادة. النتيجة تختلف من حالة للتانية ويحددها الفحص والتقييم."
-                  tone="dark"
-                />
-              </div>
-            </Reveal>
-            <div className="results-grid">
-              <Reveal className="result-card result-card-featured">
+            <div className="results-heading">
+              <Reveal>
+                <p className="editorial-label editorial-label-light">
+                  <span>04</span>
+                  حالات منشورة
+                </p>
+                <h2 id="results-title">نماذج من الحالات</h2>
+              </Reveal>
+              <Reveal variant="fade" delay={80}>
+                <p>
+                  كل نتيجة مرتبطة بحالة مختلفة، والتقييم المهني هو اللي بيحدد
+                  الخطة المناسبة.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="results-gallery">
+              <Reveal className="case-card case-card-tall" variant="clip">
                 <Image
                   src="/images/esthetic-restoration.jpg"
                   fill
-                  sizes="(max-width: 800px) 92vw, 54vw"
+                  sizes="(max-width: 760px) 94vw, 43vw"
                   alt="نموذج منشور لترميمات تجميلية بالـ composite"
-                  className="result-image"
+                  className="case-image"
                 />
-                <div className="result-overlay">
-                  <span>Esthetic restoration</span>
-                  <strong>ترميمات تجميلية</strong>
-                </div>
+                <div className="case-meta"><span>01</span><strong>Esthetic restoration</strong></div>
               </Reveal>
-              <div className="result-stack">
-                <Reveal className="result-card" delay={90}>
-                  <Image
-                    src="/images/veneers-crowns.jpg"
-                    fill
-                    sizes="(max-width: 800px) 92vw, 32vw"
-                    alt="نموذج منشور لنتيجة veneers and crowns"
-                    className="result-image"
-                  />
-                  <div className="result-overlay"><strong>Veneers & Crowns</strong></div>
-                </Reveal>
-                <Reveal className="result-card" delay={160}>
-                  <Image
-                    src="/images/full-mouth-makeover.jpg"
-                    fill
-                    sizes="(max-width: 800px) 92vw, 32vw"
-                    alt="نموذج منشور لتحسين الابتسامة"
-                    className="result-image"
-                  />
-                  <div className="result-overlay"><strong>Smile makeover</strong></div>
-                </Reveal>
-              </div>
+              <Reveal className="case-card" variant="clip" delay={100}>
+                <Image
+                  src="/images/veneers-crowns.jpg"
+                  fill
+                  sizes="(max-width: 760px) 94vw, 32vw"
+                  alt="نموذج منشور لنتيجة veneers and crowns"
+                  className="case-image"
+                />
+                <div className="case-meta"><span>02</span><strong>Veneers &amp; Crowns</strong></div>
+              </Reveal>
+              <Reveal className="case-card case-card-wide" variant="clip" delay={180}>
+                <Image
+                  src="/images/full-mouth-makeover.jpg"
+                  fill
+                  sizes="(max-width: 760px) 94vw, 48vw"
+                  alt="نموذج منشور لتحسين الابتسامة"
+                  className="case-image"
+                />
+                <div className="case-meta"><span>03</span><strong>Smile makeover</strong></div>
+              </Reveal>
             </div>
             <p className="results-disclaimer">
-              الصور للاستخدام داخل النموذج المبدئي فقط، وتحتاج موافقة العيادة وأصحاب الحالات قبل النشر الرسمي.
+              الصور للاستخدام داخل النموذج المبدئي فقط، وتحتاج موافقة العيادة
+              وأصحاب الحالات قبل النشر الرسمي.
             </p>
           </div>
         </section>
 
-        <section className="section faq-section" id="faq" aria-labelledby="faq-title">
-          <div className="container faq-grid">
-            <Reveal>
-              <div id="faq-title">
-                <SectionHeading
-                  eyebrow="قبل زيارتك"
-                  title="أسئلة شائعة"
-                  description="إجابات سريعة تساعدك تبدأ، ولو عندك سؤال طبي الأفضل نقيّمه أثناء الكشف."
-                />
-              </div>
-              <div className="faq-side-note">
-                <span><Phone size={20} aria-hidden="true" /></span>
-                <p>محتاج تسأل عن حاجة تانية؟<br /><strong>{clinic.phoneDisplay}</strong></p>
-              </div>
+        <section className="philosophy-section" aria-labelledby="philosophy-title">
+          <div className="container philosophy-layout">
+            <Reveal className="philosophy-copy">
+              <p className="editorial-label"><span>05</span>فلسفة الرعاية</p>
+              <h2 id="philosophy-title">نهتم بالتفاصيل قبل كل شيء</h2>
+              <p>
+                من لحظة دخولك لحد المتابعة، بنبني تجربة واضحة وهادية تحترم
+                وقتك وأسئلتك واحتياجك الحقيقي.
+              </p>
+              <div className="philosophy-signature">One smile at a time.</div>
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal className="philosophy-art" variant="clip" delay={100}>
+              <Image
+                src="/images/ai/enamel-sculpture-editorial.png"
+                fill
+                sizes="(max-width: 860px) 94vw, 52vw"
+                alt="تكوين نحتي تجريدي مستوحى من الدقة وانسيابية الابتسامة"
+                className="editorial-image"
+              />
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="section faq-section" id="faq" aria-labelledby="faq-title">
+          <div className="container faq-layout">
+            <Reveal className="faq-heading">
+              <p className="editorial-label"><span>06</span>قبل زيارتك</p>
+              <h2 id="faq-title">أسئلة شائعة</h2>
+              <p>
+                إجابات مختصرة تساعدك تبدأ. الأسئلة الطبية تحتاج تقييم مباشر
+                أثناء الكشف.
+              </p>
+              <a className="faq-phone" href={contactLinks.phone}>
+                <Phone size={18} aria-hidden="true" />
+                {clinic.phoneDisplay}
+              </a>
+            </Reveal>
+            <Reveal className="faq-panel" delay={90}>
               <FaqList items={clinic.faqs} />
             </Reveal>
           </div>
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
-          <div className="container contact-card">
-            <div className="contact-pattern" aria-hidden="true">S</div>
+          <div className="container contact-panel">
+            <div className="contact-orbit" aria-hidden="true" />
             <Reveal className="contact-copy">
-              <p className="eyebrow">جاهز تبدأ؟</p>
+              <p className="editorial-label editorial-label-light"><span>07</span>جاهز تبدأ؟</p>
               <h2 id="contact-title">خلّي أول خطوة بسيطة.</h2>
               <p>ابعتلنا على واتساب، واحكيلنا باختصار محتاج مساعدة في إيه.</p>
               <div className="contact-actions">
                 <a className="button button-gold button-large" href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
-                  <MessageCircle size={20} aria-hidden="true" /> احجز موعدك
+                  <MessageCircle size={20} aria-hidden="true" />
+                  احجز موعدك
                 </a>
-                <a className="button button-ghost button-large" href={contactLinks.phone}>
-                  <Phone size={19} aria-hidden="true" /> {clinic.phoneDisplay}
+                <a className="button button-outline button-large" href={contactLinks.phone}>
+                  <Phone size={19} aria-hidden="true" />
+                  {clinic.phoneDisplay}
                 </a>
               </div>
             </Reveal>
-            <Reveal className="location-card" delay={100}>
-              <span className="location-pin"><MapPin size={26} aria-hidden="true" /></span>
-              <p className="location-label">موقع العيادة</p>
+            <Reveal className="location-panel" variant="fade" delay={100}>
+              <div className="location-icon"><MapPin size={23} aria-hidden="true" /></div>
+              <small>موقع العيادة</small>
               <h3>Twin Towers</h3>
               <p>{clinic.address}</p>
               <a href={contactLinks.maps} target="_blank" rel="noreferrer" aria-label="افتح الموقع على الخريطة">
-                افتح الموقع على الخريطة <ArrowUpLeft size={17} aria-hidden="true" />
+                افتح الخريطة <ArrowUpLeft size={17} aria-hidden="true" />
               </a>
             </Reveal>
           </div>
@@ -288,26 +371,28 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <div className="container footer-grid">
+        <div className="container footer-main">
           <div className="footer-brand">
             <Image src="/images/clinic-logo.jpg" width={64} height={64} alt="شعار S Clinics" />
             <div><strong>S Clinics</strong><small>One smile at a time.</small></div>
           </div>
           <p>رعاية أسنان متخصصة في قلب الشيخ زايد.</p>
           <div className="footer-links">
-            <a href={contactLinks.instagram} target="_blank" rel="noreferrer" aria-label="إنستجرام S Clinics"><Camera size={20} aria-hidden="true" /></a>
-            <a href={contactLinks.phone} aria-label="اتصل بـ S Clinics"><Phone size={20} aria-hidden="true" /></a>
-            <a href={contactLinks.maps} target="_blank" rel="noreferrer" aria-label="موقع S Clinics على الخريطة"><MapPin size={20} aria-hidden="true" /></a>
+            <a href={contactLinks.instagram} target="_blank" rel="noreferrer" aria-label="إنستجرام S Clinics"><Camera size={19} aria-hidden="true" /></a>
+            <a href={contactLinks.phone} aria-label="اتصل بـ S Clinics"><Phone size={19} aria-hidden="true" /></a>
+            <a href={contactLinks.maps} target="_blank" rel="noreferrer" aria-label="موقع S Clinics على الخريطة"><MapPin size={19} aria-hidden="true" /></a>
           </div>
         </div>
         <div className="container footer-bottom">
           <span>© 2026 S Clinics — نموذج مبدئي</span>
           <span>المعلومات الطبية لا تغني عن الكشف.</span>
+          <span className="footer-rating"><Star size={13} aria-hidden="true" /> {clinic.rating.value}</span>
         </div>
       </footer>
 
       <a className="mobile-booking-bar" href={contactLinks.whatsapp} target="_blank" rel="noreferrer">
-        <MessageCircle size={20} aria-hidden="true" /> احجز على واتساب
+        <MessageCircle size={20} aria-hidden="true" />
+        احجز على واتساب
       </a>
     </div>
   );

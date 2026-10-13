@@ -25,9 +25,14 @@ describe("S Clinics landing page", () => {
     render(<Home />);
 
     expect(
-      screen.getByRole("heading", { level: 2, name: "خدماتنا" }),
+      screen.getByRole("heading", { level: 2, name: "خبرة دقيقة. تجربة أهدى." }),
     ).toBeInTheDocument();
-    expect(screen.getByText("جراحة الفم والوجه والفكين")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        level: 3,
+        name: "جراحة الفم والوجه والفكين",
+      }),
+    ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { level: 2, name: "د. عمر محمد ثروت" }),
     ).toBeInTheDocument();
@@ -44,5 +49,30 @@ describe("S Clinics landing page", () => {
       screen.getByRole("link", { name: "افتح الموقع على الخريطة" }),
     ).toHaveAttribute("href", expect.stringContaining("google.com/maps"));
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
+  });
+
+  it("uses the editorial image story without replacing the real doctor profile", () => {
+    render(<Home />);
+
+    expect(
+      screen.getByRole("img", { name: "عيادة أسنان عصرية بإضاءة هادئة" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "خبرة دقيقة. تجربة أهدى.",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        level: 2,
+        name: "نهتم بالتفاصيل قبل كل شيء",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", {
+        name: "د. عمر محمد ثروت مع الفريق الطبي داخل غرفة العمليات",
+      }),
+    ).toBeInTheDocument();
   });
 });
