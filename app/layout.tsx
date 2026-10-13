@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import {
+  Alexandria,
+  Cormorant_Garamond,
+  IBM_Plex_Sans_Arabic,
+} from "next/font/google";
 import type { ReactNode } from "react";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
-const cairo = Cairo({
+const display = Alexandria({
   subsets: ["arabic", "latin"],
-  variable: "--font-cairo",
+  weight: ["500", "600", "700"],
+  variable: "--font-alexandria",
+  display: "swap",
+});
+
+const body = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-ibm-plex-arabic",
+  display: "swap",
+});
+
+const editorial = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -19,7 +38,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={cairo.variable}>
+      <body className={`${display.variable} ${body.variable} ${editorial.variable}`}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

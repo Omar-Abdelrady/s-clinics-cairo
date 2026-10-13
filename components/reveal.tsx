@@ -6,13 +6,19 @@ import { useEffect, useRef, useState } from "react";
 type RevealProps = PropsWithChildren<{
   className?: string;
   delay?: number;
+  variant?: "rise" | "clip" | "fade";
 }>;
 
 type RevealStyle = CSSProperties & {
   "--reveal-delay": string;
 };
 
-export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
+export function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  variant = "rise",
+}: RevealProps) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -38,7 +44,12 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
     return () => observer.disconnect();
   }, []);
 
-  const classes = ["reveal", isVisible ? "is-visible" : "", className]
+  const classes = [
+    "reveal",
+    `reveal-${variant}`,
+    isVisible ? "is-visible" : "",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
   const style: RevealStyle = { "--reveal-delay": `${delay}ms` };
