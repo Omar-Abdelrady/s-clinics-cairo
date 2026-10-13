@@ -11,6 +11,11 @@ npm run dev
 
 ثم افتح `http://localhost:3000`.
 
+## العرض التجريبي
+
+بعد تفعيل GitHub Pages، يكون الرابط العام:
+`https://omar-abdelrady.github.io/s-clinics-cairo/`
+
 ## أوامر الجودة والإنتاج
 
 ```bash
