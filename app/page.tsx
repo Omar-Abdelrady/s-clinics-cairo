@@ -11,6 +11,7 @@ import {
   Star,
 } from "lucide-react";
 import { FaqList } from "@/components/faq-list";
+import { HeroCarousel } from "@/components/hero-carousel";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { clinic, contactLinks } from "@/data/clinic";
@@ -30,6 +31,27 @@ const proofPoints = [
     label: "بداية بسيطة",
     value: "حجز مباشر",
     note: "واتساب أو مكالمة",
+  },
+] as const;
+
+const heroSlides = [
+  {
+    src: "/images/ai/doctor-editorial-portrait.png",
+    alt: "صورة تحريرية تخيلية للدكتور عمر داخل عيادة S Clinics",
+    eyebrow: "عناية أسنان بمعايير أدق",
+    counter: "01 / 03",
+  },
+  {
+    src: "/images/ai/doctor-clinic-portrait.png",
+    alt: "صورة concept للدكتور عمر في أجواء عيادة عصرية",
+    eyebrow: "خبرة واضحة وتجربة أهدى",
+    counter: "02 / 03",
+  },
+  {
+    src: "/images/ai/clinic-interior-editorial.png",
+    alt: "عيادة أسنان عصرية بإضاءة هادئة",
+    eyebrow: "تجربة مريحة من أول زيارة",
+    counter: "03 / 03",
   },
 ] as const;
 
@@ -90,16 +112,7 @@ export default function Home() {
             </div>
 
             <Reveal className="hero-media-wrap" variant="clip" delay={120}>
-              <div className="hero-media">
-                <Image
-                  src="/images/ai/clinic-interior-editorial.png"
-                  fill
-                  sizes="(max-width: 960px) 94vw, 52vw"
-                  alt="عيادة أسنان عصرية بإضاءة هادئة"
-                  className="hero-image"
-                  priority
-                />
-                <div className="hero-media-vignette" aria-hidden="true" />
+              <HeroCarousel slides={heroSlides}>
                 <div className="hero-location-card">
                   <MapPin size={18} aria-hidden="true" />
                   <span>
@@ -107,10 +120,7 @@ export default function Home() {
                     الشيخ زايد · Twin Towers
                   </span>
                 </div>
-                <span className="hero-image-index" aria-hidden="true">
-                  S / 01
-                </span>
-              </div>
+              </HeroCarousel>
             </Reveal>
           </div>
           <a className="scroll-cue" href="#services">

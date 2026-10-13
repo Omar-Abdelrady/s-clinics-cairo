@@ -92,6 +92,7 @@ img { display: block; max-width: 100%; }
 .hero-signature span { font-family: var(--font-editorial); font-size: 1.36rem; font-weight: 600; letter-spacing: .05em; }
 .hero-signature small { color: rgba(255,255,255,.28); font-family: var(--font-editorial); font-size: .67rem; letter-spacing: .13em; text-transform: uppercase; }
 .hero-media-wrap { min-width: 0; }
+.hero-carousel { position: relative; }
 .hero-media { position: relative; min-height: 690px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 220px 22px 22px 22px; background: #26231e; box-shadow: var(--shadow-dark); }
 .hero-image, .editorial-image, .doctor-image, .case-image { object-fit: cover; transition: transform 1.3s var(--ease-out); }
 .hero-image { object-position: 55% center; animation: image-settle 1.8s 180ms both var(--ease-out); }
@@ -101,7 +102,11 @@ img { display: block; max-width: 100%; }
 .hero-location-card svg { color: var(--champagne-light); }
 .hero-location-card span { display: grid; gap: 2px; }
 .hero-location-card small { color: rgba(255,255,255,.48); font-size: .63rem; }
+.hero-slide-eyebrow { position: absolute; z-index: 2; inset-block-start: 28px; inset-inline-start: 29px; color: var(--champagne-light); font-size: .65rem; font-weight: 600; letter-spacing: .04em; }
 .hero-image-index { position: absolute; inset-block-start: 27px; inset-inline-end: 29px; direction: ltr; color: rgba(255,255,255,.66); font-family: var(--font-editorial); font-size: .72rem; letter-spacing: .18em; }
+.hero-carousel-controls { position: absolute; z-index: 3; inset-inline-start: 25px; inset-block-end: 25px; display: flex; align-items: center; gap: 7px; direction: ltr; }
+.hero-carousel-dot { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: rgba(14,13,11,.32); color: rgba(255,255,255,.54); font-family: var(--font-editorial); font-size: .68rem; cursor: pointer; transition: border-color 260ms ease, color 260ms ease, background 260ms ease, transform 260ms var(--ease-out); }
+.hero-carousel-dot:hover, .hero-carousel-dot[aria-current="true"] { border-color: var(--champagne-light); background: var(--champagne); color: var(--ink); transform: translateY(-3px); }
 .scroll-cue { position: absolute; z-index: 4; inset-inline-end: max(28px,calc((100vw - var(--container))/2)); inset-block-end: 32px; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.4); font-size: .67rem; letter-spacing: .07em; }
 .scroll-cue svg { color: var(--champagne); animation: cue-move 1.8s ease-in-out infinite; }
 
@@ -289,7 +294,9 @@ img { display: block; max-width: 100%; }
   .hero-media { min-height: 470px; border-radius: 100px 16px 16px 16px; }
   .hero-image { object-position: 51% center; }
   .hero-location-card { inset-inline: 12px; inset-block-end: 12px; padding: 12px 13px; font-size: .7rem; }
+  .hero-slide-eyebrow { inset-block-start: 19px; inset-inline-start: 20px; font-size: .58rem; }
   .hero-image-index { inset-block-start: 18px; inset-inline-end: 20px; }
+  .hero-carousel-controls { inset-inline-start: 17px; inset-block-end: 17px; }
   .proof-item { padding-inline: 14px; }
   .services-layout { gap: 56px; }
   .services-intro h2, .doctor-copy h2, .results-heading h2, .philosophy-copy h2, .faq-heading h2, .contact-copy h2 { font-size: clamp(2.65rem,13.5vw,4.1rem); }
@@ -328,4 +335,5 @@ img { display: block; max-width: 100%; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .reveal { opacity: 1; clip-path: none; transform: none; }
   .hero-title-line > span { transform: none; }
+  .hero-image { animation: none; }
 }
