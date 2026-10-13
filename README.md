@@ -38,6 +38,9 @@ npm run start
 - `public/images/ai/enamel-sculpture-editorial.png` — عمل تجريدي لقسم فلسفة الرعاية.
 - `public/images/ai/doctor-editorial-portrait.png` — بورتريه Editorial تخيلي للطبيب للـHero.
 - `public/images/ai/doctor-clinic-portrait.png` — صورة Hero عريضة تخيلية للطبيب داخل أجواء عيادة.
+- `public/images/ai/doctor-hero-identity-v2.png` — بورتريه Hero جديد مولّد بمرجع صورة الطبيب.
+- `public/images/ai/doctor-clinic-identity-v2.png` — صورة عيادة عريضة جديدة مولّدة بمرجع صورة الطبيب.
+- `public/images/ai/doctor-lifestyle-identity-v2.png` — صورة Lifestyle حيوية جديدة مولّدة بمرجع صورة الطبيب.
 
 صورة الطبيب الحقيقية وصور الحالات العلاجية منفصلة ومأخوذة من صفحات إنستجرام العامة، بينما صور الطبيب الجديدة concept art مولّدة بالذكاء الاصطناعي باستخدام صورته المرجعية. يظل نشر أي من الصور الرسمية مشروطًا بالموافقة المذكورة أعلاه.
 

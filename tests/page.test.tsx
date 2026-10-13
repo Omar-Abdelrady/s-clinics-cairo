@@ -59,7 +59,7 @@ describe("S Clinics landing page", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("img", {
-        name: "صورة تحريرية تخيلية للدكتور عمر داخل عيادة S Clinics",
+        name: "بورتريه سينمائي تخيلي للدكتور عمر داخل عيادة S Clinics",
       }),
     ).toBeInTheDocument();
     expect(

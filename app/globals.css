@@ -95,7 +95,7 @@ img { display: block; max-width: 100%; }
 .hero-carousel { position: relative; }
 .hero-media { position: relative; min-height: 690px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 220px 22px 22px 22px; background: #26231e; box-shadow: var(--shadow-dark); }
 .hero-image, .editorial-image, .doctor-image, .case-image { object-fit: cover; transition: transform 1.3s var(--ease-out); }
-.hero-image { object-position: 55% center; animation: image-settle 1.8s 180ms both var(--ease-out); }
+.hero-image { object-position: 50% 0%; animation: image-settle 1.8s 180ms both var(--ease-out); }
 .hero-media:hover .hero-image { transform: scale(1.025); }
 .hero-media-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(10,9,7,.62)); pointer-events: none; }
 .hero-location-card { position: absolute; inset-inline-start: 24px; inset-block-end: 24px; display: flex; align-items: center; gap: 13px; padding: 14px 17px; border: 1px solid rgba(255,255,255,.17); border-radius: 15px; background: rgba(14,13,11,.62); backdrop-filter: blur(14px); font-size: .78rem; }
@@ -292,7 +292,7 @@ img { display: block; max-width: 100%; }
   .quiet-link::after { display: none; }
   .hero-signature { margin-top: 44px; }
   .hero-media { min-height: 470px; border-radius: 100px 16px 16px 16px; }
-  .hero-image { object-position: 51% center; }
+  .hero-image { object-position: 50% 0%; }
   .hero-location-card { inset-inline: 12px; inset-block-end: 12px; padding: 12px 13px; font-size: .7rem; }
   .hero-slide-eyebrow { inset-block-start: 19px; inset-inline-start: 20px; font-size: .58rem; }
   .hero-image-index { inset-block-start: 18px; inset-inline-end: 20px; }

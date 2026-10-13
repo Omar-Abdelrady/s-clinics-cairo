@@ -36,20 +36,20 @@ const proofPoints = [
 
 const heroSlides = [
   {
-    src: "/images/ai/doctor-editorial-portrait.png",
-    alt: "صورة تحريرية تخيلية للدكتور عمر داخل عيادة S Clinics",
+    src: "/images/ai/doctor-hero-identity-v2.png",
+    alt: "بورتريه سينمائي تخيلي للدكتور عمر داخل عيادة S Clinics",
     eyebrow: "عناية أسنان بمعايير أدق",
     counter: "01 / 03",
   },
   {
-    src: "/images/ai/doctor-clinic-portrait.png",
-    alt: "صورة concept للدكتور عمر في أجواء عيادة عصرية",
+    src: "/images/ai/doctor-clinic-identity-v2.png",
+    alt: "صورة تخيلية للدكتور عمر داخل عيادة عصرية",
     eyebrow: "خبرة واضحة وتجربة أهدى",
     counter: "02 / 03",
   },
   {
-    src: "/images/ai/clinic-interior-editorial.png",
-    alt: "عيادة أسنان عصرية بإضاءة هادئة",
+    src: "/images/ai/doctor-lifestyle-identity-v2.png",
+    alt: "صورة حيوية تخيلية للدكتور عمر داخل العيادة",
     eyebrow: "تجربة مريحة من أول زيارة",
     counter: "03 / 03",
   },
