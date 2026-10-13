@@ -36,8 +36,10 @@ npm run start
 - `public/images/ai/clinic-interior-editorial.png` — صورة الـHero التخيلية.
 - `public/images/ai/dental-tools-editorial.png` — صورة تحريرية لقسم الخدمات.
 - `public/images/ai/enamel-sculpture-editorial.png` — عمل تجريدي لقسم فلسفة الرعاية.
+- `public/images/ai/doctor-editorial-portrait.png` — بورتريه Editorial تخيلي للطبيب للـHero.
+- `public/images/ai/doctor-clinic-portrait.png` — صورة Hero عريضة تخيلية للطبيب داخل أجواء عيادة.
 
-صورة الطبيب وصور الحالات العلاجية منفصلة ومأخوذة من صفحات إنستجرام العامة، ويظل نشرها الرسمي مشروطًا بالموافقة المذكورة أعلاه.
+صورة الطبيب الحقيقية وصور الحالات العلاجية منفصلة ومأخوذة من صفحات إنستجرام العامة، بينما صور الطبيب الجديدة concept art مولّدة بالذكاء الاصطناعي باستخدام صورته المرجعية. يظل نشر أي من الصور الرسمية مشروطًا بالموافقة المذكورة أعلاه.
 
 ## المطلوب قبل الإطلاق الرسمي
 
