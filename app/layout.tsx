@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Alexandria,
+  Cairo,
   Cormorant_Garamond,
   IBM_Plex_Sans_Arabic,
 } from "next/font/google";
@@ -8,10 +8,10 @@ import type { ReactNode } from "react";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 
-const display = Alexandria({
+const display = Cairo({
   subsets: ["arabic", "latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-alexandria",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-cairo",
   display: "swap",
 });
 

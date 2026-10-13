@@ -11,8 +11,8 @@
   --muted: #77736b;
   --line: rgba(17, 17, 15, 0.14);
   --line-dark: rgba(255, 255, 255, 0.13);
-  --font-display: var(--font-alexandria), system-ui, sans-serif;
-  --font-body: var(--font-ibm-plex-arabic), system-ui, sans-serif;
+  --font-display: var(--font-cairo), system-ui, sans-serif;
+  --font-body: var(--font-cairo), system-ui, sans-serif;
   --font-editorial: var(--font-cormorant), Georgia, serif;
   --container: 1240px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
