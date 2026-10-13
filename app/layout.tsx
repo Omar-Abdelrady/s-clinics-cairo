@@ -37,8 +37,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="ar" dir="rtl">
-      <body className={`${display.variable} ${body.variable} ${editorial.variable}`}>
+    <html
+      lang="ar"
+      dir="rtl"
+      className={`${display.variable} ${body.variable} ${editorial.variable}`}
+    >
+      <body>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
