@@ -5,6 +5,8 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { contactLinks } from "@/data/clinic";
 
+const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 const navigation = [
   { href: "#services", label: "الخدمات" },
   { href: "#doctor", label: "الطبيب" },
@@ -53,7 +55,7 @@ export function SiteHeader() {
       <div className="container header-inner">
         <a className="brand" href="#home" aria-label="S Clinics — الصفحة الرئيسية">
           <Image
-            src="/images/clinic-logo.jpg"
+            src={assetPath("/images/clinic-logo.jpg")}
             width={56}
             height={56}
             alt=""

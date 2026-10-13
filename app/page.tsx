@@ -16,6 +16,8 @@ import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { clinic, contactLinks } from "@/data/clinic";
 
+const assetPath = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+
 const proofPoints = [
   {
     label: "تقييم المرضى",
@@ -36,19 +38,19 @@ const proofPoints = [
 
 const heroSlides = [
   {
-    src: "/images/ai/doctor-hero-identity-v2.png",
+    src: assetPath("/images/ai/doctor-hero-identity-v2.png"),
     alt: "بورتريه سينمائي تخيلي للدكتور عمر داخل عيادة S Clinics",
     eyebrow: "عناية أسنان بمعايير أدق",
     counter: "01 / 03",
   },
   {
-    src: "/images/ai/doctor-clinic-identity-v2.png",
+    src: assetPath("/images/ai/doctor-clinic-identity-v2.png"),
     alt: "صورة تخيلية للدكتور عمر داخل عيادة عصرية",
     eyebrow: "خبرة واضحة وتجربة أهدى",
     counter: "02 / 03",
   },
   {
-    src: "/images/ai/doctor-lifestyle-identity-v2.png",
+    src: assetPath("/images/ai/doctor-lifestyle-identity-v2.png"),
     alt: "صورة حيوية تخيلية للدكتور عمر داخل العيادة",
     eyebrow: "تجربة مريحة من أول زيارة",
     counter: "03 / 03",
@@ -161,7 +163,7 @@ export default function Home() {
               <Reveal className="services-image-wrap" variant="clip" delay={100}>
                 <div className="services-image">
                   <Image
-                    src="/images/ai/dental-tools-editorial.png"
+                    src={assetPath("/images/ai/dental-tools-editorial.png")}
                     fill
                     sizes="(max-width: 860px) 92vw, 36vw"
                     alt="أدوات أسنان دقيقة مرتبة على سطح حجري فاتح"
@@ -209,7 +211,7 @@ export default function Home() {
             <Reveal className="doctor-visual" variant="clip">
               <div className="doctor-photo">
                 <Image
-                  src="/images/doctor-operating-room.jpg"
+                  src={assetPath("/images/doctor-operating-room.jpg")}
                   fill
                   sizes="(max-width: 900px) 94vw, 54vw"
                   alt="د. عمر محمد ثروت مع الفريق الطبي داخل غرفة العمليات"
@@ -270,7 +272,7 @@ export default function Home() {
             <div className="results-gallery">
               <Reveal className="case-card case-card-tall" variant="clip">
                 <Image
-                  src="/images/esthetic-restoration.jpg"
+                src={assetPath("/images/esthetic-restoration.jpg")}
                   fill
                   sizes="(max-width: 760px) 94vw, 43vw"
                   alt="نموذج منشور لترميمات تجميلية بالـ composite"
@@ -280,7 +282,7 @@ export default function Home() {
               </Reveal>
               <Reveal className="case-card" variant="clip" delay={100}>
                 <Image
-                  src="/images/veneers-crowns.jpg"
+                src={assetPath("/images/veneers-crowns.jpg")}
                   fill
                   sizes="(max-width: 760px) 94vw, 32vw"
                   alt="نموذج منشور لنتيجة veneers and crowns"
@@ -290,7 +292,7 @@ export default function Home() {
               </Reveal>
               <Reveal className="case-card case-card-wide" variant="clip" delay={180}>
                 <Image
-                  src="/images/full-mouth-makeover.jpg"
+                src={assetPath("/images/full-mouth-makeover.jpg")}
                   fill
                   sizes="(max-width: 760px) 94vw, 48vw"
                   alt="نموذج منشور لتحسين الابتسامة"
@@ -319,7 +321,7 @@ export default function Home() {
             </Reveal>
             <Reveal className="philosophy-art" variant="clip" delay={100}>
               <Image
-                src="/images/ai/enamel-sculpture-editorial.png"
+                src={assetPath("/images/ai/enamel-sculpture-editorial.png")}
                 fill
                 sizes="(max-width: 860px) 94vw, 52vw"
                 alt="تكوين نحتي تجريدي مستوحى من الدقة وانسيابية الابتسامة"
@@ -383,7 +385,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="container footer-main">
           <div className="footer-brand">
-            <Image src="/images/clinic-logo.jpg" width={64} height={64} alt="شعار S Clinics" />
+            <Image src={assetPath("/images/clinic-logo.jpg")} width={64} height={64} alt="شعار S Clinics" />
             <div><strong>S Clinics</strong><small>One smile at a time.</small></div>
           </div>
           <p>رعاية أسنان متخصصة في قلب الشيخ زايد.</p>
