@@ -55,7 +55,12 @@ describe("S Clinics landing page", () => {
     render(<Home />);
 
     expect(
-      screen.getByRole("img", { name: "عيادة أسنان عصرية بإضاءة هادئة" }),
+      screen.getByRole("region", { name: "صور العيادة" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("img", {
+        name: "صورة تحريرية تخيلية للدكتور عمر داخل عيادة S Clinics",
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
