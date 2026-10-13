@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Menu, MessageCircle } from "lucide-react";
-import { useRef } from "react";
+import { Menu, MessageCircle, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { contactLinks } from "@/data/clinic";
 
 const navigation = [
@@ -14,14 +14,42 @@ const navigation = [
 ] as const;
 
 export function SiteHeader() {
-  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 32);
+    const handleViewportChange = () => {
+      if (window.innerWidth > 1100) setIsMobileMenuOpen(false);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleViewportChange);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleViewportChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [isMobileMenuOpen]);
 
   function closeMobileMenu() {
-    mobileMenuRef.current?.removeAttribute("open");
+    setIsMobileMenuOpen(false);
   }
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isScrolled ? " is-scrolled" : ""}`}>
       <div className="container header-inner">
         <a className="brand" href="#home" aria-label="S Clinics — الصفحة الرئيسية">
           <Image
@@ -56,13 +84,34 @@ export function SiteHeader() {
           احجز موعدك
         </a>
 
-        <details className="mobile-menu" ref={mobileMenuRef}>
-          <summary aria-label="افتح قائمة التنقل">
-            <Menu size={24} aria-hidden="true" />
-          </summary>
-          <nav aria-label="التنقل على الموبايل">
+        <div className={`mobile-menu${isMobileMenuOpen ? " is-open" : ""}`}>
+          <button
+            type="button"
+            className="mobile-menu-trigger"
+            aria-label={isMobileMenuOpen ? "اقفل قائمة التنقل" : "افتح قائمة التنقل"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation-panel"
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+          >
+            {isMobileMenuOpen ? (
+              <X size={24} aria-hidden="true" />
+            ) : (
+              <Menu size={24} aria-hidden="true" />
+            )}
+          </button>
+          <nav
+            id="mobile-navigation-panel"
+            className="mobile-menu-panel"
+            aria-label="التنقل على الموبايل"
+            aria-hidden={!isMobileMenuOpen}
+          >
             {navigation.map((item) => (
-              <a href={item.href} key={item.href} onClick={closeMobileMenu}>
+              <a
+                href={item.href}
+                key={item.href}
+                tabIndex={isMobileMenuOpen ? 0 : -1}
+                onClick={closeMobileMenu}
+              >
                 {item.label}
               </a>
             ))}
@@ -71,12 +120,13 @@ export function SiteHeader() {
               href={contactLinks.whatsapp}
               target="_blank"
               rel="noreferrer"
+              tabIndex={isMobileMenuOpen ? 0 : -1}
               onClick={closeMobileMenu}
             >
               احجز على واتساب
             </a>
           </nav>
-        </details>
+        </div>
       </div>
     </header>
   );
